@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Coming Soon</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#020617;
+    color:#e5e7eb;
+    font-family:system-ui;
+}
+.box{
+    text-align:center;
+}
+.timer{
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    margin-top:20px;
+}
+.timer div{
+    background:#020617;
+    border:1px solid #1e293b;
+    padding:14px 18px;
+    border-radius:10px;
+}
+.num{font-size:24px;font-weight:700;}
+.label{font-size:12px;color:#94a3b8;}
+</style>
+</head>
+<body>
+
+<div class="box">
+    <h1>🚀 We Are Launching Soon</h1>
+    <p>Something awesome is coming</p>
+
+    <div class="timer">
+        <div><div class="num" id="d">00</div><div class="label">Days</div></div>
+        <div><div class="num" id="h">00</div><div class="label">Hours</div></div>
+        <div><div class="num" id="m">00</div><div class="label">Minutes</div></div>
+        <div><div class="num" id="s">00</div><div class="label">Seconds</div></div>
+    </div>
+</div>
+
+<script>
+const end = new Date(new Date().setUTCDate(new Date().getUTCDate() + 7)).setUTCHours(12,0,0,0);
+setInterval(()=>{
+  const now = new Date().getTime();
+  const diff = end - now;
+  if(diff < 0) return;
+  document.getElementById("d").innerText = Math.floor(diff/86400000);
+  document.getElementById("h").innerText = Math.floor(diff/3600000)%24;
+  document.getElementById("m").innerText = Math.floor(diff/60000)%60;
+  document.getElementById("s").innerText = Math.floor(diff/1000)%60;
+},1000);
+</script>
+
+</body>
+</html>
